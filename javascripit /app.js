@@ -1,33 +1,55 @@
 'use strict';
-function employee(emploeeId, FullName, Department, level) 
+function employee(emploeeId, FullName, Department, level,imgurl) 
 {
-this.emploeeId =emploeeId,
-this.FullName = FullName,
-this.Department = [Administration , Marketing , Development ,Finance],
-this.level = [Junior ,Mid-Senior, Senior]
-    if (this.level == "Junior"){
-        let min = 500 ;
-        let max = 1000;
-    }elseif (this.level = "Mid-Senior")
-    {
-        let min = 1000 ;
-        let max = 1500;
-    }elseif (this.level = "Senior" ) 
-    {
-        let min = 1500 ;
-        let max = 1500;
-    }
-const basicSalary = function randomIntFromInterval(min, max) { // min and max included 
-    return Math.floor(Math.random() * (max - min + 1) + min)
-  };
-    }
-    const NetSalary = basicSalary - basicSalary*0.7 ;
-    employee.prototype.NetSalary =NetSalary
+this.emploeeId =emploeeId;
+this.FullName = FullName;
+this.Department = Department;
+this.level = level;
+this.imagePath = imgurl;
+this.salary = 0;
+}
 
-    const employ1 = new employee(100,Ghazi_Same,Administration,Senior)
-    const employ2 = new employee(1001,Lana_Ali,Finance,Senior)
-    const employ3 = new employee(1002,Tamara_Ayoub,Marketing,Senior)
-    const employ4 = new employee(1003,Safi_Wali,Administration,Mid-Senior)
-    const employ5 = new employee(1004,Omar_Zaid,Development,Senior)
-    const employ6 = new employee(1005,Rana_Saleh,Development,Junior)
-    const employ7 = new employee(1006,Hadi_Ahmad,Finance,Mid-Senior)
+
+    employee.prototype.NetSalary =function (){ 
+
+        if (this.level == "Junior"){
+        this.salary =  Math.floor(Math.random() * (1000 - 500 + 1) + 500);
+
+        }else if (this.level == "Mid-Senior")
+        {
+            this.salary =  Math.floor(Math.random() * (1500 - 1000 + 1) + 1000);
+
+        }else if (this.level == "Senior" ) 
+        {
+            this.salary =  Math.floor(Math.random() * (2000 - 1500 + 1) + 1500);
+
+        }
+    this.salary = this.salary*0.925
+  };
+  employee.prototype.render = function(){
+      document.write(`<h3>Name : ${this.FullName}</h3>`);
+      document.write(`<p> Salary : ${this.salary}</p>`);
+  
+  };
+
+    let employ1 = new employee('100','Ghazi Same','Administration','Senior');
+    employ1.NetSalary()
+    employ1.render();
+    let employ2 = new employee('1001','Lana Ali','Finance','Senior');
+    employ2.NetSalary()
+    employ2.render();
+    let employ3 = new employee('1002','Tamara Ayoub','Marketing','Senior');
+    employ3.NetSalary();
+    employ3.render();
+    let employ4 = new employee('1003','Safi Wali','Administration','Mid-Senior');
+    employ4.NetSalary();
+    employ4.render();
+    let employ5 = new employee('1004','Omar Zaid','Development','Senior');
+    employ5.NetSalary();
+    employ5.render();
+    let employ6 = new employee('1005','Rana Saleh','Development','Junior');
+    employ6.NetSalary();
+    employ6.render();
+    let employ7 = new employee('1006','Hadi Ahmad','Finance','Mid-Senior');
+    employ7.NetSalary();
+    employ7.render();
